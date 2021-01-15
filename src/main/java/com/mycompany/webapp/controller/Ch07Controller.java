@@ -38,9 +38,9 @@ public class Ch07Controller {
 		
 		Ch07Board board = new Ch07Board();
 		board.setNo(1);
-		board.setTitle("포켓몬볼 삽니다.");
-		board.setContent("5개 삽니다. 제시점");
-		board.setWriter("지우");
+		board.setTitle("개화났다");
+		board.setContent("재수없네");
+		board.setWriter("임다혜");
 		board.setDate(new Date());
 		model.addAttribute("board1", board);
 		
@@ -53,9 +53,9 @@ public class Ch07Controller {
 		for(int i=1; i<=10; i++) {
 			Ch07Board board = new Ch07Board();
 			board.setNo(i);
-			board.setTitle("포켓몬볼 삽니다." + i);
-			board.setContent(i + "개 삽니다. 제시점");
-			board.setWriter("지우" + i);
+			board.setTitle("개화났다" + i);
+			board.setContent(i + "재수없네");
+			board.setWriter("임다" + i);
 			board.setDate(new Date());
 			boardList.add(board);
 		}
