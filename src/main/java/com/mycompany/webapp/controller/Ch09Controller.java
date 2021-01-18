@@ -53,7 +53,7 @@ public class Ch09Controller {
 				logger.info("size :" + size);
 				
 				//파일 저장 이름 및 경로
-				String saveDirPath = "D:/MyWorkSpace/uploadfiles/";
+				String saveDirPath = "D:/MyWorkspace/uploadfiles/";
 				String fileName = new Date().getTime() + "-" + originalFileName;
 				String filePath = saveDirPath + fileName;
 				File file = new File(filePath);
@@ -78,7 +78,7 @@ public class Ch09Controller {
 		}
 		
 		@GetMapping("/photodownload")
-		public void photoDownlad(String photo, HttpServletResponse response) {
+		public void photoDownload(String photo, HttpServletResponse response) {
 			String saveDirPath = "D:/MyWorkSpace/uploadfiles/";
 			String filePath = saveDirPath + photo;
 			

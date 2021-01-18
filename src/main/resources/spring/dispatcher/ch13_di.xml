@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- XML을 이용한 Setter 주입 -->
+<!-- <bean id="ch13Controller" class="com.mycompany.webapp.controller.Ch13Controller">
+		
+		<property name="service3" ref="ch13Service3"></property> 네임에 들어가는거는 세터 
+		<property name="service4" ref="ch13Service4"></property>
+		앞에 Ch13Service3.java에서 @Serivce를 붙였으므로 앞을 소문자로한채로 관리되고 있음
+	</bean>  -->
+	<!-- 사실 우리가 클래스 가지고 있기 때문에 그냥 어노테이션 붙여서 하면 됨
+	이건 앞에서 viewresolver처럼 스프링이 가지고 있는 별개의 클래스의 경우 직접 어노테이션 할 수 없으므로 이와 같이 작성 -->
+	
+	<bean id="ch13Controller" class="com.mycompany.webapp.controller.Ch13Controller"
+		p:service3-ref="ch13Service3"
+		p:service4-ref="ch13Service4">
+	</bean>
+	
+	
+	<!-- Properties 파일 설정 -->
+	<context:property-placeholder location="classpath:properties/*.properties"/>
+	 
+	
+	
+</beans>
