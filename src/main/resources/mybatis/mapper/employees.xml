@@ -6,7 +6,7 @@
 	
 <mapper namespace="mybatis.mapper.employees">
 	<select id="selectByPk" resultType="employee">
-		select employee_id, first222222222222222222_name, last_name
+		select employee_id, first_name, last_name
 		from employees
 		where employee_id = #{employee_id} <!-- #{} 안에 어떤 값이 들어간다. 매개변수화된 sql문 -->
 	</select>

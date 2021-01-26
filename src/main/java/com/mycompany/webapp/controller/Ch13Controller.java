@@ -32,10 +32,10 @@ public class Ch13Controller {
 //	@Resource
 	private Ch13Service2 service2;
 	
-	@Resource
+	
 	private Ch13Service3 service3;
 	
-	@Resource
+	
 	private Ch13Service4 service4;
 	
 	@Resource
