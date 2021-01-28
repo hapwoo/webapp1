@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -32,10 +33,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.mycompany.webapp.dto.Ch14Board;
 import com.mycompany.webapp.dto.Ch14Employee;
 import com.mycompany.webapp.dto.Ch14Member;
+import com.mycompany.webapp.dto.Ch14Order;
+import com.mycompany.webapp.dto.Ch14OrderItem;
 import com.mycompany.webapp.dto.Ch14Pager;
 import com.mycompany.webapp.service.Ch14BoardService;
 import com.mycompany.webapp.service.Ch14EmployeeService;
 import com.mycompany.webapp.service.Ch14MemberService;
+import com.mycompany.webapp.service.Ch14OrderService;
 
 @Controller
 @RequestMapping("/ch14")
@@ -206,7 +210,7 @@ public class Ch14Controller {
 	}
 	
 	@PostMapping("/boardwrite")
-	public String noardwriteForm(Ch14Board board, HttpSession session) throws Exception {
+	public String boardwriteForm(Ch14Board board, HttpSession session) throws Exception {
 		String mid = (String) session.getAttribute("sessionMid");
 		board.setBwriter(mid);
 		
@@ -373,8 +377,36 @@ public class Ch14Controller {
 		os.flush();
 		os.close();
 		
+	}
+	
+	
+	@Resource
+	private Ch14OrderService orderService;
+	
+	@GetMapping("/order")
+	public String order() {
+		//주문 정보 얻기
+		Ch14Order order = new Ch14Order();
+		order.setMid("winter");
+		order.setAddress("서울시 송파구");
+		
+		//주문 상품 정보 얻기 (장바구니에서 가져와야됨)
+		List<Ch14OrderItem> orderitems = new ArrayList<>();
+		Ch14OrderItem  oi1 = new Ch14OrderItem();
+		oi1.setPid("다이아몬드");
+		oi1.setAmount(100);
+		orderitems.add(oi1);
+		
+		Ch14OrderItem  oi2 = new Ch14OrderItem();
+		oi2.setPid("골드");
+		oi2.setAmount(10);
+		orderitems.add(oi2);
 		
 		
+		orderService.order(order, orderitems);
+		
+		
+		return "ch14/content";
 	}
 	
 }
