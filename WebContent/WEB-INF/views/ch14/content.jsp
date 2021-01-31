@@ -127,7 +127,7 @@
 							<a class="btn btn-success btn-sm" href="javascript:getEmployee(100)">사번 = 100 정보 가져오기</a>
 							<a class="btn btn-success btn-sm" href="javascript:getEmployee(101)">사번 = 101 정보 가져오기</a>
 							<script>
-							const getEmployee = (eid) => {
+							const getEmployee = () => {
 								$.ajax ({
 									url: "employee",
 									data: {employee_id: eid},
